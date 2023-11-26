@@ -1,0 +1,31 @@
+-- Create Database
+CREATE DATABASE BusinessDB;
+USE BusinessDB;
+
+-- Create Employees Table
+CREATE TABLE Employees (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department_ID INT,
+    Position VARCHAR(50),
+    Salary DECIMAL(10, 2),
+    FOREIGN KEY (Department_ID) REFERENCES Departments(ID)
+);
+
+-- Create Departments Table
+CREATE TABLE Departments (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Manager_ID INT,
+    FOREIGN KEY (Manager_ID) REFERENCES Employees(ID)
+);
+
+-- Create Projects Table
+CREATE TABLE Projects (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department_ID INT,
+    Start_Date DATE,
+    End_Date DATE,
+    FOREIGN KEY (Department_ID) REFERENCES Departments(ID)
+);
